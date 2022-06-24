@@ -1,0 +1,155 @@
+@import url(main-menu.css);
+
+.manager-section {
+    padding: 30px 50px;
+}
+
+.manager-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-name {
+    display: flex;
+    column-gap: 30px;
+}
+
+.manager-title .text {
+    padding: 12px 18px;
+    background: #010101;
+    border-left: 20px solid #af871b;
+    color: #af871b;
+    font-size: 23px;
+}
+
+.search form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-btn {
+    padding: 10px 0 5px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #af871b;
+    cursor: pointer;
+    background: transparent;
+    font-size: 18px;
+}
+.table-section, .form-section {
+    margin: 35px 0 25px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #AF871B;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    text-transform: uppercase;
+    font-style:   italic;
+    text-align: center;
+    font-weight: bold;
+    border-top: 20px solid #af871b;
+    padding: 10px;
+}
+td:last-child {
+    cursor: pointer;
+    text-align: center;
+}
+td:last-child i {
+    color: #af871b;
+    position: relative;
+}
+td:last-child:hover i {
+    animation: angle-animation 1s linear infinite;
+}
+
+@keyframes angle-animation {
+    0% {left: 0;}
+    25% {left: 2px;}
+    50% {left: 4px;}
+    75% {left: 2px;}
+    100% {left: 0;}
+}
+
+.load-more {
+    display: flex;
+    justify-content: center;
+}
+
+.form-section {
+    border-left: 20px solid #ffc300;
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.25);
+    padding: 30px 45px;
+}
+
+.title-underline {
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffc300;
+    position: relative;
+}
+
+.title-underline::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 150%;
+    /* z-index: 150; */
+    background: #af871b;
+}
+
+.history-list {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.history-item {
+    display: flex;
+    column-gap: 40px;
+}
+
+.history-item .text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+}
+
+.history-item a {
+    text-decoration: none;
+}
+.history-item a:hover {
+    color: #ffc300;
+}
+.btnHuy{
+    width: 100px;
+    height: 35px;
+    background-color: #51C8E2;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: 5px ;
+    border: #51C8E2;
+    text-align: center;
+    margin-left: 10%;
+}
+.btnLuu{
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    background-color: #F3AD47;
+    color: #ffffff;
+    border-radius: 5px ;
+    border: #F3AD47;
+    text-align: center;
+    margin-left: 50%;
+}

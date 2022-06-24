@@ -1,0 +1,37 @@
+@import url(nav.css);
+@import url(footer.css);
+@import url(form.css);
+@import url(menu.css);
+@import url(scroll-bar.css);
+
+.navbar {
+    padding-right: 0;
+}
+
+.user-nav {
+    background: #fff;
+    height: 100%;
+    display: flex;
+    padding-right: 20px;
+    padding-left: 30px;
+    border-left: 10px solid #af871b;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+.user-nav a {
+    display: none;
+}
+
+.user-login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 35px;
+    position: relative;
+}
+
+.icon i {
+    color: #ffc300;
+}

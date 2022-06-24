@@ -1,0 +1,74 @@
+@import url(nav.css);
+@import url(footer.css);
+@import url(scroll-bar.css);
+@import url(form.css);
+
+.images-slide {
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: relative;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.next, .prev {
+    color: rgba(0, 0, 0, 0.5);
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    padding: 0 50px;
+    font-size: 40px;
+    /* color: #fff; */
+    font-weight: 900;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.175) 55.57%, rgba(0, 0, 0, 0) 100%);
+}
+
+.next:hover, .prev:hover {
+    color: #010101;
+}
+
+.next i, .prev i {
+    position: absolute;
+    top: 50%;
+}
+
+.next {
+    right: 0;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.slide-dot {
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    cursor: pointer;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    margin: 0 15px;
+}
+
+.dot:hover, .active {
+    background: rgba(255, 255, 255, 0.8);
+}

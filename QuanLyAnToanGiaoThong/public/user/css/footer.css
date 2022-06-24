@@ -1,0 +1,35 @@
+footer {
+    height: 295px;
+    border-top: 10px solid #af871b;
+    border-bottom: 35px solid #ffc300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo-img {
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+}
+
+.logo-img img {
+    height: 150px;
+    width: auto;
+}
+
+.logo-img .text {
+    font-size: 30px;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.contact {
+    line-height: 1.5;
+}
+
+.contact a {
+    text-decoration: none;
+}
