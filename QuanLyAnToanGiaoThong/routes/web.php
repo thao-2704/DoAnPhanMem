@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DanhmucController;
 use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Login;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +18,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('admin.index');
+// });
+
 Route::resource('/', UserController::class);
 Route::resource('/taikhoan', UserController::class);
+
+
+Route::resource('/danhmuc', DanhmucController::class);
 
