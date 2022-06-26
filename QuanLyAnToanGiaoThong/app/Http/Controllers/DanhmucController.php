@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\danhmuc;
+use App\Models\nghidinh;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DanhmucController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $danhmuc = danhmuc::orderBy('id')->paginate(5);
+        return view('admin.danhmuc.index', compact('danhmuc'));
     }
 
     /**
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        $nghidinh = nghidinh::all();
+        return view('admin.danhmuc.create', compact('nghidinh'));
     }
 
     /**
@@ -35,8 +38,14 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        // $user->name = 
+        $data = $request->all();
+        $danhmuc = new danhmuc();
+        $danhmuc->ten_dm = $data['tendanhmuc'];
+        $danhmuc->noidung = $data['noidung'];
+        $danhmuc->idnghidinh = $data['nghidinh'];
+       
+        $danhmuc->save();
+        return redirect()->back()->with('status', 'Tạo Danh Mục Mới Thành Công');
     }
 
     /**
@@ -58,7 +67,10 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $nghidinh = nghidinh::all();
+        $danhmuc = danhmuc::find($id)->first();
+        // dd($taikhoan);
+        return view('admin.danhmuc.edit', compact('nghidinh', 'danhmuc'));
     }
 
     /**
@@ -70,7 +82,13 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $danhmuc = danhmuc::find($id);
+        $danhmuc->ten_dm = $data['tendanhmuc'];
+        $danhmuc->noidung = $data['noidung'];
+        $danhmuc->idnghidinh = $data['nghidinh'];
+        $danhmuc->save();
+        Return redirect()->back()->with('status', 'Cập Nhật Thành Công!!!');
     }
 
     /**
@@ -81,6 +99,7 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $danhmuc = danhmuc::find($id)->delete();
+        return redirect()->back()->with('status', 'Xoá thành công!!!');
     }
 }

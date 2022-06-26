@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 26, 2022 lúc 05:46 AM
+-- Thời gian đã tạo: Th6 26, 2022 lúc 11:53 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -54,6 +54,28 @@ CREATE TABLE `chucvu` (
 INSERT INTO `chucvu` (`id`, `ten`, `mota`) VALUES
 (1, 'acb', 'abc'),
 (2, 'bcd', 'bcd');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `danhmuc`
+--
+
+CREATE TABLE `danhmuc` (
+  `id` int(11) NOT NULL,
+  `ten_dm` varchar(255) NOT NULL,
+  `noidung` longtext NOT NULL,
+  `idnghidinh` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `danhmuc`
+--
+
+INSERT INTO `danhmuc` (`id`, `ten_dm`, `noidung`, `idnghidinh`) VALUES
+(1, 'Vượt đèn đỏ', 'VI phạm giao thông đường bộ', 1),
+(3, 'e', 'ew', 1),
+(4, 'Vượt đèn đỏ', 's', 1);
 
 -- --------------------------------------------------------
 
@@ -118,29 +140,23 @@ CREATE TABLE `loaivanbandinhkem` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `muc`
---
-
-CREATE TABLE `muc` (
-  `id` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `ten` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `noidung` longtext NOT NULL,
-  `idnghidinh` varchar(255) CHARACTER SET utf8 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `nghidinh`
 --
 
 CREATE TABLE `nghidinh` (
-  `id` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL,
   `so` int(11) NOT NULL,
-  `ten` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `ngay` date NOT NULL,
-  `coquanbanhanh` varchar(255) CHARACTER SET utf8 NOT NULL
+  `ten_nghidinh` varchar(255) NOT NULL,
+  `ngay_banhanh` date NOT NULL,
+  `coquanbanhanh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `nghidinh`
+--
+
+INSERT INTO `nghidinh` (`id`, `so`, `ten_nghidinh`, `ngay_banhanh`, `coquanbanhanh`) VALUES
+(1, 654, 'Vi phạm hành chính', '2022-06-01', 'Uỷ ban nhân dân');
 
 -- --------------------------------------------------------
 
@@ -259,6 +275,12 @@ ALTER TABLE `chucvu`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `danhmuc`
+--
+ALTER TABLE `danhmuc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `dieuluat`
 --
 ALTER TABLE `dieuluat`
@@ -283,13 +305,6 @@ ALTER TABLE `khoan`
 --
 ALTER TABLE `loaivanbandinhkem`
   ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `muc`
---
-ALTER TABLE `muc`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_muc__idnghidinh` (`idnghidinh`);
 
 --
 -- Chỉ mục cho bảng `nghidinh`
@@ -351,10 +366,22 @@ ALTER TABLE `chucvu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT cho bảng `danhmuc`
+--
+ALTER TABLE `danhmuc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT cho bảng `donvi`
 --
 ALTER TABLE `donvi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `nghidinh`
+--
+ALTER TABLE `nghidinh`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `taikhoan`
@@ -383,12 +410,6 @@ ALTER TABLE `dieuluat`
 --
 ALTER TABLE `khoan`
   ADD CONSTRAINT `FK_khoan__iddieuluat` FOREIGN KEY (`iddieuluat`) REFERENCES `dieuluat` (`id`);
-
---
--- Các ràng buộc cho bảng `muc`
---
-ALTER TABLE `muc`
-  ADD CONSTRAINT `FK_muc__idnghidinh` FOREIGN KEY (`idnghidinh`) REFERENCES `nghidinh` (`id`);
 
 --
 -- Các ràng buộc cho bảng `noidungvanban`

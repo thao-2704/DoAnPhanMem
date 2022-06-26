@@ -20,18 +20,20 @@ const addSigninModal = () => {
     let body = document.querySelector('body');
     
     body.innerHTML += `
-    <div class="modal small-modal signin-modal">
-        <h1 class="title">Đăng nhập</h1>
-        <form action="#">
-            <label for="name">Tên đăng nhập</label><br>
-            <input type="text" name="name" id="name" required><br>
-            <label for="password">Mật khẩu</label><br>
-            <input type="password" name="password" id="password" required><br>
-            <div class="btn-group">
-                <button class="btn btn-primary" type="submit">Đăng nhập</button>
-                <button class="btn" onclick="closeModal('.signin-modal')">Huỷ</button>
-            </div>
-        </form>
+    <div class="modal signin-modal" ">
+        <div class="small-modal">
+            <h1 class="title">Đăng nhập</h1>
+            <form action="#">
+                <label for="name">Tên đăng nhập</label><br>
+                <input type="text" name="name" id="name" required><br>
+                <label for="password">Mật khẩu</label><br>
+                <input type="password" name="password" id="password" required><br>
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit">Đăng nhập</button>
+                    <button class="btn" onclick="closeModal('.signin-modal')">Huỷ</button>
+                </div>
+            </form>        
+        </div>
     </div>
     `;
 }

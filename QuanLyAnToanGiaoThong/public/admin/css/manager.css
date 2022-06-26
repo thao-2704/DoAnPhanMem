@@ -37,7 +37,7 @@
     background: transparent;
     font-size: 18px;
 }
-.table-section, .form-section {
+.table-section, .form-section, .list-section {
     margin: 35px 0 25px;
 }
 table {
@@ -45,7 +45,7 @@ table {
     border-collapse: collapse;
 }
 th, td {
-    border: 1px solid #AF871B;
+    border: 2px solid #AF871B;
     padding: 8px;
     text-align: center;
 }
@@ -53,7 +53,7 @@ th {
     text-transform: uppercase;
     font-style:   italic;
     text-align: center;
-    font-weight: bold;
+    font-weight: 300;
     border-top: 20px solid #af871b;
     padding: 10px;
 }
