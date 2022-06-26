@@ -39,7 +39,7 @@
     <div class="modal signin-modal">
         <div class="small-modal">
             <h1 class="title">Đăng nhập</h1>
-            <form role="form" action="{{ url('/login') }}" method="post">
+            <form role="form" action="{{ url('login') }}" method="post">
                 @csrf
                 <label for="name">Tên đăng nhập</label><br>
                 <input type="text" name="name" id="name" required><br>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\taikhoan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 use Session;
 
 class LoginController extends Controller
@@ -20,10 +20,14 @@ class LoginController extends Controller
         ];
         $validator = Validator::make($request->all(), $rule, $message);
         if ($validator->failed()) {
-            return redirect('/')->withErrors($validator)->withInput();
+            // return redirect('/')->withErrors($validator)->withInput();
+            return 'vc failded nha';
         } else {
             $userName = $request->input('name');
-            // $password = 
+            $password = $request->input('password');
+
+            $findUser = taikhoan::orderBy('madangnhap')->model;
+            return strval($findUser);
         }
     }
 
@@ -34,7 +38,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        // return 'hello';
+        return 'hello';
     }
 
     /**
