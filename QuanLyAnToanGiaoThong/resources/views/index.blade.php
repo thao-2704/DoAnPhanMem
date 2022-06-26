@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar"></nav>
+    @include('include.header')
 
     <section class="images-slide">
         <div class="slide">
@@ -34,7 +34,7 @@
         </div>
     </section>
 
-    <footer></footer>
+    @include('include/footer')
 
     <div class="modal signin-modal">
         <div class="small-modal">

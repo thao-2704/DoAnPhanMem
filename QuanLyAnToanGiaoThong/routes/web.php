@@ -1,12 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-<<<<<<< HEAD
-use app\Http\Controllers\CanhSatGiaoThongController;
-use App\Http\Controllers\HomeController;
-=======
 use App\Http\Controllers\DanhmucController;
->>>>>>> 754c4b03cfb1e4e68effa7e96a22e1717f728b46
+use App\Http\Controllers\HomeController;
 use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -23,18 +19,15 @@ use Illuminate\Auth\Events\Login;
 |
 */
 
-<<<<<<< HEAD
 Route::resource('/', HomeController::class);
 Route::resource('/taikhoan', UserController::class);
-=======
 // Route::get('/', function () {
 //     return view('admin.index');
 // });
 
-Route::resource('/', UserController::class);
+// Route::resource('/', UserController::class);
 Route::resource('/taikhoan', UserController::class);
 
 
 Route::resource('/danhmuc', DanhmucController::class);
 
->>>>>>> 754c4b03cfb1e4e68effa7e96a22e1717f728b46
