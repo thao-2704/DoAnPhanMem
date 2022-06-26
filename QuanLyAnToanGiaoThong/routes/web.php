@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 
 //admin
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('admin.index');
 });
