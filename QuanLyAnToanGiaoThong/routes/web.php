@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChucvuController;
 use App\Http\Controllers\DanhmucController;
+use App\Http\Controllers\DonviController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Database\Schema\IndexDefinition;
@@ -29,3 +31,6 @@ Route::resource('/danhmuc', DanhmucController::class);
 // login and logout routes
 Route::post('/login', [LoginController::class, 'postLogin'])->name('login');
 // Route::post('/login', 'App\Http\Controllers\LoginController@postLogin');
+Route::resource('/chucvu', ChucvuController::class);
+
+Route::resource('/donvi', DonviController::class);
