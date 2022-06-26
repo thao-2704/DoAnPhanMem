@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use app\Http\Controllers\CanhSatGiaoThongController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +17,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layout_admin');
-});
-
-
-//admin
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+Route::resource('/', HomeController::class);
+Route::resource('/taikhoan', UserController::class);
