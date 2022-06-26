@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChucvuController;
 use App\Http\Controllers\DanhmucController;
+use App\Http\Controllers\DonviController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +33,6 @@ Route::resource('/taikhoan', UserController::class);
 
 Route::resource('/danhmuc', DanhmucController::class);
 
+Route::resource('/chucvu', ChucvuController::class);
+
+Route::resource('/donvi', DonviController::class);
