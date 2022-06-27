@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\taikhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Session;
 
 class LoginController extends Controller
 {
-    public function postLogin(Request $request) {
+    public function postLogin(Request $request)
+    {
         $rule = [
             'name' => 'required',
             'password' => 'required'
@@ -25,9 +27,24 @@ class LoginController extends Controller
         } else {
             $userName = $request->input('name');
             $password = $request->input('password');
-
-            $findUser = taikhoan::orderBy('madangnhap')->model;
-            return strval($findUser);
+            $findUser = DB::table('taikhoan')->where('madangnhap', $userName)->first();
+            if ($findUser->matkhau == md5($password)) {
+                $message = "Đăng nhập thành công";
+                if (!$request->session()->has('user')) {
+                    // $request->session()->add;
+                }
+                $donvi = DB::table('chucvu')->where('id', $findUser->idchucvu)->first();
+                if ($donvi->ten == 'Cán bộ Cảnh sát giao thông') {
+                    // return view('canh-sat-giao-thong.index');
+                    return redirect('/csgt');
+                } else if ($donvi->ten == 'Đội trưởng') {
+                    return 'UI for Đội trưởng';
+                } else {
+                    return 'Comming soon';
+                } 
+            } else {
+                return 'fail nha';
+            }
         }
     }
 

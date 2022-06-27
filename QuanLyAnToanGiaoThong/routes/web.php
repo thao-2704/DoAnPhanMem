@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChucvuController;
+use App\Http\Controllers\CsgtController;
 use App\Http\Controllers\DanhmucController;
 use App\Http\Controllers\DonviController;
 use App\Http\Controllers\HomeController;
@@ -34,3 +35,6 @@ Route::post('/login', [LoginController::class, 'postLogin'])->name('login');
 Route::resource('/chucvu', ChucvuController::class);
 
 Route::resource('/donvi', DonviController::class);
+
+// canh sat giao thong routes
+Route::resource('/csgt', CsgtController::class);
