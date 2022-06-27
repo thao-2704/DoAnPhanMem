@@ -2,10 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\taikhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Session;
 
 class LoginController extends Controller
 {
+    public function postLogin(Request $request) {
+        $rule = [
+            'name' => 'required',
+            'password' => 'required'
+        ];
+        $message = [
+            'name.required' => 'Vui lòng nhập mã đăng nhập',
+            'password.required' => 'Vui lòng nhập mật khẩu',
+        ];
+        $validator = Validator::make($request->all(), $rule, $message);
+        if ($validator->failed()) {
+            // return redirect('/')->withErrors($validator)->withInput();
+            return 'vc failded nha';
+        } else {
+            $userName = $request->input('name');
+            $password = $request->input('password');
+
+            $findUser = taikhoan::orderBy('madangnhap')->model;
+            return strval($findUser);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +38,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        return 'hello';
     }
 
     /**
