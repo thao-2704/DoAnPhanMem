@@ -70,7 +70,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        reuturn()
+        return('');
     }
 
     /**
