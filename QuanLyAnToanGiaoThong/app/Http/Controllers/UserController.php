@@ -82,8 +82,8 @@ class UserController extends Controller
         //
         $donvi = donvi::all();
         $chucvu = chucvu::all();
-        $taikhoan = taikhoan::find($id)->first();
-        // dd($taikhoan);
+        $taikhoan = taikhoan::find($id);
+        // dd($taikhoan->hoten);
         return view('admin.taiKhoan.edit', compact('donvi', 'chucvu', 'taikhoan'));
     }
 

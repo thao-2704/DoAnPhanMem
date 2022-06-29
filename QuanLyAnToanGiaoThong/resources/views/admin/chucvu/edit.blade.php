@@ -32,7 +32,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="uname">Tên Chức Vụ :</label>
-                            <input type="text" class="form-control" value="{{$chucvu->tenchucvu}}" placeholder="Tiêu đề" name="tenchucvu" required>
+                            <input type="text" class="form-control" value="{{$chucvu->ten}}" placeholder="Tiêu đề" name="ten" required>
                         </div>
                         <div class="form-group">
                             <label for="uname">Mô Tả :</label>

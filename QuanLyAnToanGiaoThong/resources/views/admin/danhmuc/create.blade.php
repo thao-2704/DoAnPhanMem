@@ -31,7 +31,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="uname">Tên Danh Mục :</label>
-                            <input type="text" class="form-control" value="" placeholder="Tiêu đề" name="tendanhmuc"required>
+                            <input type="text" class="form-control" value="" placeholder="Tiêu đề" name="ten_dm"required>
                             <!-- <div class="invalid-feedback">Vui lòng nhập tên bài viết.</div> -->
                         </div>
                         <div class="form-group">
@@ -42,7 +42,7 @@
                       
                         <div class="form-group">
                             <label>Nghị Định  :</label>
-                            <select name="nghidinh" class="form-select">
+                            <select name="idnghidinh" class="form-select">
                                 @foreach ($nghidinh as $item)
                                 <option value="{{$item->id}}">{{$item->so}}</option>
                                 @endforeach

@@ -40,7 +40,7 @@ class ChucvuController extends Controller
           //
           $data = $request->all();
           $chucvu = new chucvu();
-          $chucvu->ten = $data['tenchucvu'];
+          $chucvu->ten = $data['ten'];
           $chucvu->mota = $data['mota'];
          
           $chucvu->save();
@@ -66,7 +66,7 @@ class ChucvuController extends Controller
      */
     public function edit($id)
     {
-        $chucvu = chucvu::find($id)->first();
+        $chucvu = chucvu::find($id);
         // dd($taikhoan);
         return view('admin.chucvu.edit', compact('chucvu'));
     }
@@ -83,7 +83,7 @@ class ChucvuController extends Controller
          //
          $data = $request->all();
          $chucvu = chucvu::find($id);
-         $chucvu->ten = $data['tenchucvu'];
+         $chucvu->ten = $data['ten'];
          $chucvu->mota = $data['mota'];
         
          $chucvu->save();

@@ -65,7 +65,7 @@ class DonviController extends Controller
      */
     public function edit($id)
     {
-        $donvi = donvi::find($id)->first();
+        $donvi = donvi::find($id);
         // dd($taikhoan);
         return view('admin.donvi.edit', compact('donvi'));
     }

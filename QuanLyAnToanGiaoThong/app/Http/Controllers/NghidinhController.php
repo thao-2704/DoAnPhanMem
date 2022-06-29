@@ -69,7 +69,7 @@ class NghidinhController extends Controller
      */
     public function edit($id)
     {
-        $nghidinh = nghidinh::find($id)->first();
+        $nghidinh = nghidinh::find($id);
         // dd($taikhoan);
         return view('admin.nghidinh.edit', compact('nghidinh'));
     }

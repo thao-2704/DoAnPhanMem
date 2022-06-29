@@ -31,7 +31,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="uname">Tên Chức Vụ :</label>
-                            <input type="text" class="form-control" value="" placeholder="Tiêu đề" name="tenchucvu"required>
+                            <input type="text" class="form-control" value="" placeholder="Tiêu đề" name="ten"required>
                             <!-- <div class="invalid-feedback">Vui lòng nhập tên bài viết.</div> -->
                         </div>
                         <div class="form-group">

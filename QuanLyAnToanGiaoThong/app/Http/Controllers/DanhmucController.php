@@ -68,7 +68,7 @@ class DanhmucController extends Controller
     public function edit($id)
     {
         $nghidinh = nghidinh::all();
-        $danhmuc = danhmuc::find($id)->first();
+        $danhmuc = danhmuc::find($id);
         // dd($taikhoan);
         return view('admin.danhmuc.edit', compact('nghidinh', 'danhmuc'));
     }
@@ -84,9 +84,9 @@ class DanhmucController extends Controller
     {
         $data = $request->all();
         $danhmuc = danhmuc::find($id);
-        $danhmuc->ten_dm = $data['tendanhmuc'];
+        $danhmuc->ten_dm = $data['ten_dm'];
         $danhmuc->noidung = $data['noidung'];
-        $danhmuc->idnghidinh = $data['nghidinh'];
+        $danhmuc->idnghidinh = $data['idnghidinh'];
         $danhmuc->save();
         Return redirect()->back()->with('status', 'Cập Nhật Thành Công!!!');
     }
