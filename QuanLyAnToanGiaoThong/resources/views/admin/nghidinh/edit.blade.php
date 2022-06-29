@@ -7,7 +7,7 @@
                 <div class="card-header pb-0 p-3">
                     <div class="row">
                         <div class="col-6 d-flex align-items-center">
-                            <h6 class="mb-0">Cập Nhật Đơn Vị</h6>
+                            <h6 class="mb-0">Cập Nhật Nghị Định</h6>
                         </div>
                     </div>
                 </div>
@@ -27,18 +27,25 @@
                 </div>
                 @endif
                 <div class="container">
-                    <form method="POST" action="{{route('donvi.update',[$donvi->id])}}" class="needs-validation" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('nghidinh.update',[$nghidinh->id])}}" class="needs-validation" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
-                            <label for="uname">Tên Chức Vụ :</label>
-                            <input type="text" class="form-control" value="{{$donvi->ten}}" placeholder="Tiêu đề" name="tendonvi" required>
+                            <label for="uname">Nghị định số :</label>
+                            <input type="text" class="form-control" value="{{$nghidinh->so}}" placeholder="Tiêu đề" name="so" required>
                         </div>
                         <div class="form-group">
-                            <label for="uname">Mô Tả :</label>
-                            <input type="text" class="form-control" value="{{$donvi->cap}}" placeholder="Tiêu đề" name="cap" required>
+                            <label for="uname">Tên nghị định :</label>
+                            <input type="text" class="form-control" value="{{$nghidinh->ten_nghidinhen}}" placeholder="Tiêu đề" name="ten_nghidinhen" required>
                         </div>
-                      
+                        <div class="form-group">
+                            <label for="uname">Ngày ban hành :</label>
+                            <input type="date" class="form-control" value="{{$nghidinh->ngay_banhanh}}" placeholder="Tiêu đề" name="ngay_banhanh" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname">Cơ quan ban hành :</label>
+                            <input type="text" class="form-control" value="{{$nghidinh->coquanbanhanh}}" placeholder="Tiêu đề" name="coquanbanhanh" required>
+                        </div>
                         
                         <button type="submit" class="btn btn-outline-primary btn-sm mb-0 mb-4">Cập Nhật</button>
                       

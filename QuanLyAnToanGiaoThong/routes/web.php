@@ -7,6 +7,7 @@ use App\Http\Controllers\DanhmucController;
 use App\Http\Controllers\DonviController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NghidinhController;
 use Illuminate\Database\Schema\IndexDefinition;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -38,5 +39,6 @@ Route::resource('/chucvu', ChucvuController::class);
 
 Route::resource('/donvi', DonviController::class);
 
+Route::resource('/nghidinh', NghidinhController::class);
 // canh sat giao thong routes
 Route::resource('/csgt', CsgtController::class);

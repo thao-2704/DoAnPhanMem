@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\donvi;
+use App\Models\nghidinh;
 use Illuminate\Http\Request;
 
-class DonviController extends Controller
+class NghidinhController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DonviController extends Controller
      */
     public function index()
     {
-        $donvi = donvi::orderBy('id')->paginate(5);
-        return view('admin.donvi.index', compact('donvi'));
+        $nghidinh = nghidinh::orderBy('id')->paginate(5);
+        return view('admin.nghidinh.index', compact('nghidinh'));
     }
 
     /**
@@ -25,8 +25,8 @@ class DonviController extends Controller
      */
     public function create()
     {
-        $donvi = donvi::orderBy('id')->paginate(5);
-        return view('admin.donvi.create', compact('donvi'));
+        $nghidinh = nghidinh::orderBy('id')->paginate(5);
+        return view('admin.nghidinh.create', compact('nghidinh'));
     }
 
     /**
@@ -36,14 +36,18 @@ class DonviController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
+    {
         $data = $request->all();
-        $donvi = new donvi();
-        $donvi->ten = $data['ten'];
-        $donvi->cap = $data['cap'];
+        $nghidinh = new nghidinh();
+        $nghidinh->so = $data['so'];
+        $nghidinh->ten_nghidinhen = $data['ten_nghidinhen'];
+        $nghidinh->ngay_banhanh = $data['ngay_banhanh'];
+        $nghidinh->coquanbanhanh = $data['coquanbanhanh'];
+
+
        
-        $donvi->save();
-        return redirect()->back()->with('status', 'Thêm Đơn Vị Thành Công');
+        $nghidinh->save();
+        return redirect()->back()->with('status', 'Thêm Nghị Định Thành Công');
     }
 
     /**
@@ -65,9 +69,9 @@ class DonviController extends Controller
      */
     public function edit($id)
     {
-        $donvi = donvi::find($id)->first();
+        $nghidinh = nghidinh::find($id)->first();
         // dd($taikhoan);
-        return view('admin.donvi.edit', compact('donvi'));
+        return view('admin.nghidinh.edit', compact('nghidinh'));
     }
 
     /**
@@ -80,11 +84,13 @@ class DonviController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $donvi = donvi::find($id);
-        $donvi->ten = $data['ten'];
-        $donvi->cap = $data['cap'];
+        $nghidinh = nghidinh::find($id);
+        $nghidinh->so = $data['so'];
+        $nghidinh->ten_nghidinhen = $data['ten_nghidinhen'];
+        $nghidinh->ngay_banhanh = $data['ngay_banhanh'];
+        $nghidinh->coquanbanhanh = $data['coquanbanhanh'];
        
-        $donvi->save();
+        $nghidinh->save();
         return redirect()->back()->with('status', 'Cập Nhật Thành Công');
     }
 
@@ -97,7 +103,7 @@ class DonviController extends Controller
     public function destroy($id)
     {
         
-        $donvi = donvi::find($id)->delete();
+        $nghidinh = nghidinh::find($id)->delete();
         return redirect()->back()->with('status', 'Xoá thành công!!!');
     }
 }
