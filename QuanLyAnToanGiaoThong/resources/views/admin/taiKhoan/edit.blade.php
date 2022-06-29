@@ -54,7 +54,7 @@
                             <label>Đơn Vị:</label>
                             <select name="maDonVi" class="form-select">
                                 @foreach($donvi as $item)
-                                <option {{$taikhoan->iddonvi == $item->id ? 'selected' :''}} value ="{{$item->id}}">{{$item->ten}}</option>
+                                <option {{$taikhoan->iddonvi == $item->id ? 'selected' :''}} value="{{$item->id}}">{{$item->ten}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -62,14 +62,23 @@
                             <label>Chức Vụ :</label>
                             <select name="maChucVu" class="form-select">
                                 @foreach($chucvu as $item)
-                                <option {{$taikhoan->idchucvu == $item->id ? 'selected' :''}} value ="{{$item->id}}">{{$item->ten}}</option>
+                                <option {{$taikhoan->idchucvu == $item->id ? 'selected' :''}} value="{{$item->id}}">{{$item->ten}}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label>Quyền hạn :</label>
+                            <select name="quyen" class="form-select">
+                                <option value="1">Khách</option>
+                                <option value="2">Quản Trị</option>
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-outline-primary btn-sm mb-0 mb-4">Cập Nhật</button>
                         <a href="{{route('taikhoan.index',[$item->maTaiKhoan])}}" class="btn btn-link  mx-n2 mb-0">
-                                            <i class="btn btn-outline-primary btn-sm mb-0 mb-4">Xem </i>
-                                        </a>
+                            <i class="btn btn-outline-primary btn-sm mb-0 mb-4">Xem </i>
+                        </a>
                     </form>
                 </div>
             </div>

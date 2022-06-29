@@ -31,8 +31,13 @@ class LoginController extends Controller
 
             // $findUser = taikhoan::orderBy('madangnhap')->first();
             $findUser = taikhoan::where('maDangNhap', $userName)->where('matkhau', md5($password))->first();
-            if ($findUser)
-                return redirect('/home');
+            if ($findUser) {
+                if ($findUser->quyen == 1)
+                    return redirect('/home');
+                else {
+                    return redirect('/taikhoan');
+                }
+            }
             return redirect()->back();
         }
     }

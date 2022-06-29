@@ -70,6 +70,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Quyền hạn :</label>
+                            <select name="quyen" class="form-select">
+                                <option value="2">Quản Trị</option>
+                                <option value="1">Khách</option>
+                            </select>
+                        </div>
                         <!-- <div class="form-group">
                             <label>Trạng thái:</label>
                             <select name="trangThai" class="form-select">

@@ -19,6 +19,7 @@ class taikhoan extends Model
         'iddonvi',
         'matkhau',
         'madangnhap',
+        'quyen'
     ];
     protected $primaryKey = 'maTaiKhoan';
     protected $table = 'taikhoan';

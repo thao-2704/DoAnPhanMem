@@ -54,6 +54,7 @@ class UserController extends Controller
         $taikhoan->idchucvu = $data['maChucVu'];
         $taikhoan->matkhau = md5('123456');
         $taikhoan->sodienthoai = $data['sdt'];
+        $taikhoan->quyen = $data['quyen'];
         $taikhoan->save();
         return redirect()->back()->with('status', 'Tạo Tài Khoản Thành Công');
     }
@@ -106,6 +107,7 @@ class UserController extends Controller
         $taikhoan->idchucvu = $data['maChucVu'];
         $taikhoan->matkhau = md5('123456');
         $taikhoan->sodienthoai = $data['sdt'];
+        $taikhoan->quyen = $data['quyen'];
         $taikhoan->save();
         Return redirect()->back()->with('status', 'Cập Nhật Thành Công!!!');
     }

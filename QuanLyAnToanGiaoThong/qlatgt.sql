@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 26, 2022 lúc 11:53 AM
+-- Thời gian đã tạo: Th6 29, 2022 lúc 11:59 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.11
 
@@ -73,7 +73,7 @@ CREATE TABLE `danhmuc` (
 --
 
 INSERT INTO `danhmuc` (`id`, `ten_dm`, `noidung`, `idnghidinh`) VALUES
-(1, 'Vượt đèn đỏ', 'VI phạm giao thông đường bộ', 1),
+(1, 'Xe không có biển số', 'VI phạm giao thông đường bộ', 1),
 (3, 'e', 'ew', 1),
 (4, 'Vượt đèn đỏ', 's', 1);
 
@@ -213,17 +213,18 @@ CREATE TABLE `taikhoan` (
   `idchucvu` varchar(255) CHARACTER SET utf8 NOT NULL,
   `iddonvi` varchar(255) CHARACTER SET utf8 NOT NULL,
   `matkhau` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `madangnhap` varchar(255) CHARACTER SET utf8 NOT NULL
+  `madangnhap` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `quyen` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`maTaiKhoan`, `hoten`, `ngaysinh`, `diachi`, `sodienthoai`, `idchucvu`, `iddonvi`, `matkhau`, `madangnhap`) VALUES
-(4, 'thảo', '2022-06-26', '1', '1', '2', '1', 'e10adc3949ba59abbe56e057f20f883e', '1'),
-(5, '2', '2022-06-08', 'sdsd', '12345566', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '2'),
-(6, 'ds', '2022-06-10', 'dss', '12345667', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '3');
+INSERT INTO `taikhoan` (`maTaiKhoan`, `hoten`, `ngaysinh`, `diachi`, `sodienthoai`, `idchucvu`, `iddonvi`, `matkhau`, `madangnhap`, `quyen`) VALUES
+(5, 'Thanh Thảo', '2022-06-08', 'sdsd', '12345566', '2', '1', 'e10adc3949ba59abbe56e057f20f883e', '2', 1),
+(6, 'ds', '2022-06-10', 'dss', '12345667', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '3', 2),
+(7, '1', '2022-06-23', '1', '1', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '1', 2);
 
 -- --------------------------------------------------------
 
@@ -387,7 +388,7 @@ ALTER TABLE `nghidinh`
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `maTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `maTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -398,12 +399,6 @@ ALTER TABLE `taikhoan`
 --
 ALTER TABLE `chitietvanban`
   ADD CONSTRAINT `FK_chitietvanban__idloaivanban` FOREIGN KEY (`idloaivanban`) REFERENCES `loaivanbandinhkem` (`id`);
-
---
--- Các ràng buộc cho bảng `dieuluat`
---
-ALTER TABLE `dieuluat`
-  ADD CONSTRAINT `FK_dieuluat__idmuc` FOREIGN KEY (`idmuc`) REFERENCES `muc` (`id`);
 
 --
 -- Các ràng buộc cho bảng `khoan`
@@ -430,13 +425,6 @@ ALTER TABLE `phuongtien`
 ALTER TABLE `vanbandinhkem`
   ADD CONSTRAINT `FK_vanbandinhkem__idloaivanban` FOREIGN KEY (`idloaivanban`) REFERENCES `loaivanbandinhkem` (`id`),
   ADD CONSTRAINT `FK_vanbandinhkem__idvuvipham` FOREIGN KEY (`idvuvipham`) REFERENCES `vuvipham` (`id`);
-
---
--- Các ràng buộc cho bảng `vuvipham`
---
-ALTER TABLE `vuvipham`
-  ADD CONSTRAINT `FK_vuvipham__idphuongtien` FOREIGN KEY (`idphuongtien`) REFERENCES `phuongtien` (`id`),
-  ADD CONSTRAINT `FK_vuvipham__idtaikhoan` FOREIGN KEY (`idtaikhoan`) REFERENCES `taikhoan` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

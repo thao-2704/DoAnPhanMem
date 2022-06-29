@@ -28,6 +28,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số Điên Thoại</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Đơn Vị</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Chức Vụ</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quyền hạn</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" colspan="2">Thao Tác</th>
                                 </tr>
                             </thead>
@@ -37,13 +38,36 @@
                                     <td>
                                         <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$key + 1}}</p>
                                     </td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->madangnhap}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->hoten}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->ngaysinh}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->diachi}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->sodienthoai}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->donvi->ten}}</p></td>
-                                    <td><p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->chucvu->ten}}</p></td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->madangnhap}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->hoten}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->ngaysinh}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->diachi}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->sodienthoai}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->donvi->ten}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">{{$item->chucvu->ten}}</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs ms-sm-3 font-weight-bold mb-0">
+                                            @if($item->quyen == 2)
+                                            <?php echo ('Quản trị'); ?>
+                                            @else
+                                            <?php echo ('Khách') ;?>
+                                            @endif
+                                        </p>
+                                    </td>
                                     <td>
                                         <form class="float-start mt-2" action="{{route('taikhoan.destroy',[$item->maTaiKhoan])}}" method="POST">
                                             @method('DELETE')
@@ -54,7 +78,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                    <a href="{{route('taikhoan.edit',[$item->maTaiKhoan])}}" class="btn btn-link text-dark px-3 mx-n2 mb-0">
+                                        <a href="{{route('taikhoan.edit',[$item->maTaiKhoan])}}" class="btn btn-link text-dark px-3 mx-n2 mb-0">
                                             <i class="fas fa-pencil-alt text-dark me-2"></i>
                                         </a>
                                         <!-- <a href="{{route('taikhoan.index',[$item->maTaiKhoan])}}" class="btn btn-link  mx-n2 mb-0">
@@ -63,7 +87,7 @@
                                     </td>
                                     @endforeach
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                         <div class="p-2">
