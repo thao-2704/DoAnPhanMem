@@ -12,6 +12,7 @@ class LoginController extends Controller
 {
     public function postLogin(Request $request)
     {
+
         $rule = [
             'name' => 'required',
             'password' => 'required'
@@ -28,10 +29,11 @@ class LoginController extends Controller
             $userName = $request->input('name');
             $password = $request->input('password');
 
-            $findUser = taikhoan::orderBy('madangnhap')->first();
-            // dd($findUser);
-            // return strval($findUser);
-            return redirect('/taikhoan');
+            // $findUser = taikhoan::orderBy('madangnhap')->first();
+            $findUser = taikhoan::where('maDangNhap', $userName)->where('matkhau', md5($password))->first();
+            if ($findUser)
+                return redirect('/home');
+            return redirect()->back();
         }
     }
     /**
@@ -73,7 +75,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        return('');
+        return ('');
     }
 
     /**
