@@ -25,7 +25,6 @@
         </a>
     </section>
     <footer></footer>
-
     <script src="user/js/nav.js"></script>
     <script src="user/js/footer.js"></script>
     <script src="user/js/form.js"></script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\taikhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Session;
 
@@ -26,8 +27,10 @@ class LoginController extends Controller
             $userName = $request->input('name');
             $password = $request->input('password');
 
-            $findUser = taikhoan::orderBy('madangnhap')->model;
-            return strval($findUser);
+            $findUser = taikhoan::orderBy('madangnhap')->first();
+            // dd($findUser);
+            // return strval($findUser);
+            return redirect('/taikhoan');
         }
     }
 

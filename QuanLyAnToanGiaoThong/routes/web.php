@@ -23,7 +23,9 @@ use Illuminate\Auth\Events\Login;
 */
 
 Route::resource('/', HomeController::class);
-Route::resource('/home', HomeController::class);
+
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+
 // Route::get('/taikhoan', UserController::class);
 Route::resource('/taikhoan', UserController::class);
 Route::resource('/danhmuc', DanhmucController::class);

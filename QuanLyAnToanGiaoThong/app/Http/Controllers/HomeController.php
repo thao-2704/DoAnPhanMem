@@ -22,6 +22,11 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function home()
+    {
+        # code...
+        return view('canh-sat-giao-thong.index');
+    }
     /**
      * Show the form for creating a new resource.
      *
