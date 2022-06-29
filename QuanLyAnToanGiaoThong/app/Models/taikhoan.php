@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class taikhoan extends Model
 {
     use HasFactory;
+    public $timestamps = false; //set time to false
+
     protected $fillable = [
         'hoten',
         'ngaysinh',
