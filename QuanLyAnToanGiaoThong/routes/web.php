@@ -41,6 +41,7 @@ Route::resource('/donvi', DonviController::class);
 
 Route::resource('/nghidinh', NghidinhController::class);
 // canh sat giao thong routes
+
 Route::resource('/csgt', CsgtController::class);
 
 Route::resource('/cong-an-phuong/home','capHomeController');
@@ -54,3 +55,13 @@ Route::resource('/cong-an-phuong/danh-sach-vi-pham','capCanhCaoController');
 Route::resource('/cong-an-phuong/chi-tiet-loi','capChiTietLoiController');
 
 Route::resource('/cong-an-phuong/tao-canh-cao','capTaoCanhCaoController');
+// Route::resource('/csgt', CsgtController::class);
+Route::get('/csgt/{id}', [CsgtController::class, 'show'])->name('csgt');
+Route::get('/csgt/{id}/lich-su', [CsgtController::class, 'showHistory']);
+Route::get('/csgt/{id}/lich-su/lich-su-lap-van-ban', [CsgtController::class, 'showDocumentHistory']);
+Route::get('/csgt/{id}/lich-su/lich-su-xu-ly-vi-pham', [CsgtController::class, 'showHandledHistory']);
+Route::get('/csgt/{id}/xu-ly-vi-pham', [CsgtController::class, 'showHandleView']);
+Route::get('/csgt/{id}/xu-ly-vi-pham/vi-pham-dang-xu-ly', [CsgtController::class, 'showHandlingView']);
+Route::get('/csgt/{id}/xu-ly-vi-pham/tao-moi', [CsgtController::class, 'showNewHandlingView']);
+Route::get('/csgt/{id}/tra-cuu', [CsgtController::class, 'showSearchView']);
+

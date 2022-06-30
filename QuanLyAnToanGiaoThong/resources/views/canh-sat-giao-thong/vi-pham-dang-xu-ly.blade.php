@@ -7,12 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cảnh sát giao thông: Vi phạm đang xử lý</title>
 
-    <link rel="stylesheet" href="../css/manager.css">
+    <link rel="stylesheet" href="../../../user/css/manager.css">
     <script src="https://kit.fontawesome.com/043ac30448.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <nav class="navbar"></nav>
+    @include('include.header')
+    <div style="display: none;">
+        <p id="name">{{ $name }}</p>
+        <p id="id">{{ $id }}</p>
+    </div>
     <section class="manager-section">
         <div class="manager-title">
             <div class="title-name">
@@ -56,12 +60,12 @@
             </div>
         </div>
     </section>
-    <footer></footer>
+    @include('include/footer')
 
-    <script src="../js/nav.js"></script>
-    <script src="../js/footer.js"></script>
-    <script src="../js/form.js"></script>
-    <script src="js/main-menu.js"></script>
+    <script src="../../../user/js/nav.js"></script>
+    <script src="../../../user/js/footer.js"></script>
+    <script src="../../../user/js/form.js"></script>
+    <script src="../../../user/js/canh-sat-giao-thong/main-menu.js"></script>
 </body>
 
 </html>
