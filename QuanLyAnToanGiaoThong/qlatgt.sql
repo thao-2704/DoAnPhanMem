@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 29, 2022 lúc 11:59 AM
+-- Thời gian đã tạo: Th6 30, 2022 lúc 06:28 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.11
+-- Phiên bản PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,8 +52,10 @@ CREATE TABLE `chucvu` (
 --
 
 INSERT INTO `chucvu` (`id`, `ten`, `mota`) VALUES
-(1, 'acb', 'abc'),
-(2, 'bcd', 'bcd');
+(1, 'Cán bộ Cảnh sát giao thông', 'Cán bộ Cảnh sát giao thông'),
+(2, 'Nhân viên thuế', 'Nhân viên thuế'),
+(5, 'Thủ trưởng đơn vị', 'Thủ trưởng đơn vị'),
+(6, 'Admin', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -108,8 +110,24 @@ CREATE TABLE `donvi` (
 --
 
 INSERT INTO `donvi` (`id`, `ten`, `cap`) VALUES
-(1, 'abc', 1),
-(2, 'def', 0);
+(1, 'Phòng Cảnh sát giao thông - Công an Đà Nẵng', 1),
+(2, 'Đội cảnh sát giao thông - Công an quận Thanh Khê', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -136,6 +154,30 @@ CREATE TABLE `loaivanbandinhkem` (
   `ten` varchar(255) CHARACTER SET utf8 NOT NULL,
   `mota` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_06_26_161542_create_taikhoans_table', 1),
+(6, '2022_06_27_162306_create_sessions_table', 1);
 
 -- --------------------------------------------------------
 
@@ -188,6 +230,36 @@ CREATE TABLE `noidungvanban` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `phuongtien`
 --
 
@@ -197,6 +269,21 @@ CREATE TABLE `phuongtien` (
   `bienso` varchar(255) CHARACTER SET utf8 NOT NULL,
   `idchuphuongtien` varchar(255) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -222,9 +309,40 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`maTaiKhoan`, `hoten`, `ngaysinh`, `diachi`, `sodienthoai`, `idchucvu`, `iddonvi`, `matkhau`, `madangnhap`, `quyen`) VALUES
-(5, 'Thanh Thảo', '2022-06-08', 'sdsd', '12345566', '2', '1', 'e10adc3949ba59abbe56e057f20f883e', '2', 1),
-(6, 'ds', '2022-06-10', 'dss', '12345667', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '3', 2),
-(7, '1', '2022-06-23', '1', '1', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '1', 2);
+(5, 'Thanh Thảo', '2022-06-08', 'sdsd', '12345566', '1', '1', 'e10adc3949ba59abbe56e057f20f883e', '2', 1),
+(6, 'ds', '2022-06-10', 'dss', '12345667', '6', '1', 'e10adc3949ba59abbe56e057f20f883e', '3', 2),
+(7, '1', '2022-06-23', '1', '1', '6', '1', 'e10adc3949ba59abbe56e057f20f883e', '1', 2),
+(9, 'Nguyễn Thị Phi Thương', '2001-02-16', '02 Thanh Sơn, Thanh Bình, Hải Châu', '0375191332', '1', '2', 'e10adc3949ba59abbe56e057f20f883e', 'broombroom', 1),
+(10, 'Lê Tấn Tài', '1989-02-15', '02 Thanh Sơn, Thanh Bình, Hải Châu', '0647841355', '2', '2', 'e10adc3949ba59abbe56e057f20f883e', 'nvt123', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `taikhoans`
+--
+
+CREATE TABLE `taikhoans` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -295,6 +413,13 @@ ALTER TABLE `donvi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
 -- Chỉ mục cho bảng `khoan`
 --
 ALTER TABLE `khoan`
@@ -305,6 +430,12 @@ ALTER TABLE `khoan`
 -- Chỉ mục cho bảng `loaivanbandinhkem`
 --
 ALTER TABLE `loaivanbandinhkem`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -328,6 +459,20 @@ ALTER TABLE `noidungvanban`
   ADD KEY `FK_noidungvanban__idvanban` (`idvanban`);
 
 --
+-- Chỉ mục cho bảng `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Chỉ mục cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
 -- Chỉ mục cho bảng `phuongtien`
 --
 ALTER TABLE `phuongtien`
@@ -335,10 +480,31 @@ ALTER TABLE `phuongtien`
   ADD KEY `FK_phuongtien__idchuphuongtien` (`idchuphuongtien`);
 
 --
+-- Chỉ mục cho bảng `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
 -- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`maTaiKhoan`);
+
+--
+-- Chỉ mục cho bảng `taikhoans`
+--
+ALTER TABLE `taikhoans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- Chỉ mục cho bảng `vanbandinhkem`
@@ -364,7 +530,7 @@ ALTER TABLE `vuvipham`
 -- AUTO_INCREMENT cho bảng `chucvu`
 --
 ALTER TABLE `chucvu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc`
@@ -379,16 +545,46 @@ ALTER TABLE `donvi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT cho bảng `nghidinh`
 --
 ALTER TABLE `nghidinh`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `maTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `maTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `taikhoans`
+--
+ALTER TABLE `taikhoans`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
