@@ -10,9 +10,11 @@ userNav.innerHTML += `
 `;
 
 let loginNav = document.querySelector('.user-nav');
+let name = document.querySelector('#name').innerHTML;
+let id = document.querySelector('#id').innerHTML;
 loginNav.innerHTML += `
 <div class="user-login" onclick="showDropdown('.user-dropdown')">
-    <div class="user-name">Thượng tá<br>Lê Minh Hùng</div>
+    <div class="user-name">${name}</div>
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
 </div>
 `;

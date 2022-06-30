@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\chucvu;
 use App\Models\taikhoan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Session;
 
 class LoginController extends Controller
 {
-    public function postLogin(Request $request)
+    public function postLogin(Request $request, Response $response)
     {
 
         $rule = [
@@ -23,19 +23,24 @@ class LoginController extends Controller
         ];
         $validator = Validator::make($request->all(), $rule, $message);
         if ($validator->failed()) {
-            // return redirect('/')->withErrors($validator)->withInput();
-            return 'vc failded nha';
+            return view('error');
         } else {
             $userName = $request->input('name');
             $password = $request->input('password');
 
-            // $findUser = taikhoan::orderBy('madangnhap')->first();
             $findUser = taikhoan::where('maDangNhap', $userName)->where('matkhau', md5($password))->first();
             if ($findUser) {
-                if ($findUser->quyen == 1)
-                    return redirect('/home');
-                else {
+                $id = $findUser->maTaiKhoan;
+                $name = $findUser->hoten;
+                $chucvu = chucvu::where('id', $findUser->idchucvu)->first();
+                if ($chucvu->ten == 'Cán bộ Cảnh sát giao thông') {
+                    return redirect()->route('csgt', [$id]);
+                } else if ($chucvu->ten == 'Đội trưởng') {
+                    return 'UI for Đội trưởng';
+                } else if ($chucvu->ten == 'Admin')
                     return redirect('/taikhoan');
+                else {
+                    return redirect('/home');
                 }
             }
             return redirect()->back();

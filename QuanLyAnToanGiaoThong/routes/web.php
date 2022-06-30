@@ -41,4 +41,5 @@ Route::resource('/donvi', DonviController::class);
 
 Route::resource('/nghidinh', NghidinhController::class);
 // canh sat giao thong routes
-Route::resource('/csgt', CsgtController::class);
+// Route::resource('/csgt', CsgtController::class);
+Route::get('/csgt/{id}', [CsgtController::class, 'show'])->name('csgt');

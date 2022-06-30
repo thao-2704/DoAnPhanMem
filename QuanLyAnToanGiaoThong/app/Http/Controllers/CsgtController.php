@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\taikhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CsgtController extends Controller
 {
@@ -45,7 +46,8 @@ class CsgtController extends Controller
      */
     public function show($id)
     {
-        //
+        $findUser = taikhoan::where('maTaiKhoan', $id)->first();
+        return view('canh-sat-giao-thong.index', ['id' => $id, 'name' => $findUser->hoten]);
     }
 
     /**

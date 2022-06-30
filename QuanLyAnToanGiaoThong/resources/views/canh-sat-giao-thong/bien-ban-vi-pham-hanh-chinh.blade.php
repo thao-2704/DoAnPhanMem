@@ -13,6 +13,10 @@
 
 <body>
     <nav class="navbar"></nav>
+    <div style="display: none;">
+        <p id="name">{{ $name }}</p>
+        <p id="id">{{ $id }}</p>
+    </div>
     <section class="manager-section">
         <div class="manager-title">
             <div class="title-name">
@@ -123,8 +127,7 @@
                 </fieldset>
 
                 <div class="btn-group" style="grid-column: 1 / span 3;">
-                    <a href="tao-moi-menu.html" class="btn btn-primary btn-large" style="margin: 0 auto;"
-                        type="submit"><i class="fa-solid fa-angle-right"></i></a>
+                    <a href="tao-moi-menu.html" class="btn btn-primary btn-large" style="margin: 0 auto;" type="submit"><i class="fa-solid fa-angle-right"></i></a>
                 </div>
             </form>
         </div>
