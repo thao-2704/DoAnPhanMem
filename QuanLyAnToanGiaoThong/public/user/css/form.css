@@ -25,6 +25,7 @@ input[type="search"] {
 fieldset {
     padding: 20px;
     border-color: #ffc300;
+    margin: 20px 0;
 }
 legend {
     padding: 0 15px;
@@ -33,7 +34,7 @@ legend {
     visibility: hidden;
 }
 .file-input::before {
-    content: '\2b';
+    content: "\2b";
     display: inline-block;
     padding: 10px 16px;
     font-size: 25px;
@@ -50,7 +51,8 @@ legend {
     font-style: normal;
     margin-left: 10px;
 }
-.radio-btn-group label, input {
+.radio-btn-group label,
+input {
     margin-top: 10px;
 }
 .radio-btn {
@@ -61,11 +63,11 @@ input[type="radio"] {
     visibility: hidden;
 }
 input[type="radio"]::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 10px;
     height: 10px;
-    border: 2px solid #AF871B;
+    border: 2px solid #af871b;
     border-radius: 50px;
     visibility: visible;
 }
@@ -82,8 +84,8 @@ input[type="radio"]:checked::before {
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     z-index: 20;
 }
 
@@ -114,6 +116,7 @@ input[type="radio"]:checked::before {
 }
 
 .btn {
+    background: #f1f1f1;
     outline: none;
     border: none;
     padding: 12px 18px;
@@ -140,11 +143,21 @@ input[type="radio"]:checked::before {
 }
 
 @keyframes load-more-animation {
-    0% {top: 0;}
-    25% {top: 2px;}
-    50% {top: 4px;}
-    75% {top: 2px;}
-    100% {top: 0;}
+    0% {
+        top: 0;
+    }
+    25% {
+        top: 2px;
+    }
+    50% {
+        top: 4px;
+    }
+    75% {
+        top: 2px;
+    }
+    100% {
+        top: 0;
+    }
 }
 
 .btn-primary {
@@ -176,7 +189,7 @@ input[type="radio"]:checked::before {
 }
 .small-form .title::after,
 .small-modal .title::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 175px;
@@ -199,7 +212,7 @@ input[type="radio"]:checked::before {
 
 .large-form .title::after,
 .large-modal .title::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 40vw;
@@ -235,4 +248,12 @@ input[type="radio"]:checked::before {
 .large-form .grid-container {
     grid-template-columns: auto auto auto;
     column-gap: 50px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.list-section .time {
+    border-right: 2px solid #fcc300;
 }

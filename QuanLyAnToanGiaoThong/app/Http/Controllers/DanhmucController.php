@@ -43,7 +43,7 @@ class DanhmucController extends Controller
         $danhmuc->ten_dm = $data['tendanhmuc'];
         $danhmuc->noidung = $data['noidung'];
         $danhmuc->idnghidinh = $data['nghidinh'];
-       
+
         $danhmuc->save();
         return redirect()->back()->with('status', 'Tạo Danh Mục Mới Thành Công');
     }
@@ -56,7 +56,6 @@ class DanhmucController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -88,7 +87,7 @@ class DanhmucController extends Controller
         $danhmuc->noidung = $data['noidung'];
         $danhmuc->idnghidinh = $data['idnghidinh'];
         $danhmuc->save();
-        Return redirect()->back()->with('status', 'Cập Nhật Thành Công!!!');
+        return redirect()->back()->with('status', 'Cập Nhật Thành Công!!!');
     }
 
     /**
@@ -99,7 +98,7 @@ class DanhmucController extends Controller
      */
     public function destroy($id)
     {
-         $danhmuc = danhmuc::find($id)->delete();
+        $danhmuc = danhmuc::find($id)->delete();
         return redirect()->back()->with('status', 'Xoá thành công!!!');
     }
 }

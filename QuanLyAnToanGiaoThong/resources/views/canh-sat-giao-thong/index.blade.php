@@ -17,15 +17,16 @@
         <p id="id">{{ $id }}</p>
     </div>
     <section class="menu-section">
-        <a href="lich-su-menu.html" class="menu">
+        <a href="{{ url('csgt/'.$id.'/lich-su') }}" class="menu">
             <div class="menu-icon"><i class="fa-solid fa-clock"></i></div>
             <p class="menu-title">Lịch sử</p>
         </a>
-        <a href="xu-ly-vi-pham-menu.html" class="menu">
+        <!-- <a href="xu-ly-vi-pham-menu.html" class="menu"> -->
+        <a href="{{ url('csgt/'.$id.'/xu-ly-vi-pham') }}" class="menu">
             <div class="menu-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
             <p class="menu-title">Xử lý vi phạm</p>
         </a>
-        <a href="#" class="menu">
+        <a href="{{ url('csgt/'.$id.'/tra-cuu') }}" class="menu">
             <div class="menu-icon"><i class="fa-solid fa-binoculars"></i></div>
             <p class="menu-title">Tra cứu</p>
         </a>
