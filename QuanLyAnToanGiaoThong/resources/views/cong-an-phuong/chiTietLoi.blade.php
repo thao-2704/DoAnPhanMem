@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('layout')
 @section('content')
 <section class="main-content">
     <div class="pageTitle">Cảnh báo vi phạm</div>
