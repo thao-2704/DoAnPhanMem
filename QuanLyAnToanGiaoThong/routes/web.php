@@ -42,3 +42,15 @@ Route::resource('/donvi', DonviController::class);
 Route::resource('/nghidinh', NghidinhController::class);
 // canh sat giao thong routes
 Route::resource('/csgt', CsgtController::class);
+
+Route::resource('/cong-an-phuong/home','capHomeController');
+
+Route::resource('/cong-an-phuong/xem-thong-bao','capThongBaoController');
+
+Route::resource('/cong-an-phuong/xem-thong-tin','capXemThongTinController');
+
+Route::resource('/cong-an-phuong/danh-sach-vi-pham','capCanhCaoController');
+
+Route::resource('/cong-an-phuong/chi-tiet-loi','capChiTietLoiController');
+
+Route::resource('/cong-an-phuong/tao-canh-cao','capTaoCanhCaoController');
